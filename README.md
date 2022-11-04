@@ -1,1 +1,1 @@
-# Cognitive-Psychology-EAC-Project
+# Cognitive Psychology EAC Project
