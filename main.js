@@ -228,4 +228,4 @@ function mouseReleased() {
 
 function windowResized() {
     resetApp(); // resets everything
-}}
+}
