@@ -1,8 +1,3 @@
-// TODO: 
-// make it pretty
-// add info popup
-// write info
-
 const WINDOW_PERCENT_X = 0.8;
 const WINDOW_PERCENT_Y = 0.8;
 let WINDOW_X;
@@ -47,14 +42,27 @@ let resourcesR6;
 let resourcesR7; 
 
 function setup() {
-    createCanvas(windowWidth, windowHeight, 1000);
-    document.getElementById("resetButton").onclick = reset;
+    createCanvas(windowWidth, windowHeight);
+    var infoPopup = document.getElementById("infoPopup");
+    document.getElementById("resetButton").onclick = resetApp;
     document.getElementById("modelButton").onclick = switchModel;
+    document.getElementById("infoButton").onclick = function() {
+        infoPopup.style.display = "block";
+    }
+    document.getElementById("closeButton").onclick = function() { 
+        infoPopup.style.display = "none"; 
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == infoPopup) {
+            infoPopup.style.display = "none";
+        }
+    }
     setWindowSizes();
     createObjects();
 }
 
-function reset() {
+function resetApp() {
     resizeCanvas(windowWidth, windowHeight, 1000);
     setWindowSizes();
     createObjects();
@@ -68,7 +76,7 @@ function switchModel() {
         currentModel = MODELS.slots;
     }
     document.getElementById("modelText").innerHTML = currentModel;
-    reset();
+    resetApp();
 }
 
 function setWindowSizes() {
@@ -80,7 +88,7 @@ function setWindowSizes() {
     WINDOW_Y = windowHeight * 0.7 * (1 - WINDOW_PERCENT_Y);
     
     BUCKET_WIDTH = 0.12 * WINDOW_WIDTH;
-    RESOURCE_WIDTH = 0.97 * BUCKET_WIDTH;
+    RESOURCE_WIDTH = 0.98 * BUCKET_WIDTH;
     UNIT_SIZE = 0.07 * WINDOW_HEIGHT;
 }
 
@@ -219,5 +227,5 @@ function mouseReleased() {
 }
 
 function windowResized() {
-    reset(); // resets everything
+    resetApp(); // resets everything
 }

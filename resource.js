@@ -1,6 +1,3 @@
-// Resource draggable representation
-// Adapted from draggable.js from Daniel Shiffman <http://www.shiffman.net>
-
 class Resource {
     constructor(x, y, w, size, ch, sat, id) {
         this.dragging = false; // Is the object being dragged?
